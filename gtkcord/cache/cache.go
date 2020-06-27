@@ -195,6 +195,12 @@ func SetImageScaledContext(ctx context.Context,
 
 	// Transform URL:
 	gif := strings.Contains(url, "gif")
+
+	// I don't like animated gifs
+	if gif {
+	    url = strings.Replace(url, "gif", "png", -1)
+	    gif = false
+	}
 	dst := TransformURL(url)
 
 	// Try and set the Pixbuf from file:
